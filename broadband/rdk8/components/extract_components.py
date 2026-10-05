@@ -229,12 +229,13 @@ def _rows(wb):
 
     cur_subsys = None
     seen_names = set()
-    for row in ws.iter_rows(min_row=3, values_only=True):
-        if row[name_idx] is None and row[subsys_idx] is None:
+    for row in ws.iter_rows(min_row=3):
+        raw = [c.value for c in row]
+        if raw[name_idx] is None and raw[subsys_idx] is None:
             continue
-        if row[subsys_idx]:
-            cur_subsys = row[subsys_idx]
-        name = row[name_idx]
+        if raw[subsys_idx]:
+            cur_subsys = raw[subsys_idx]
+        name = raw[name_idx]
         if name is None:
             continue
         if isinstance(name, str):
@@ -246,7 +247,14 @@ def _rows(wb):
         if name in seen_names:
             continue
         seen_names.add(name)
-        urls = _split_urls(row[url_idx])
+        # Cell value may be None if URLs are stored only as hyperlinks in
+        # Excel (openpyxl values_only=True misses hyperlinks entirely).
+        cell_val = raw[url_idx]
+        if cell_val is None:
+            url_cell = row[url_idx]
+            if url_cell.hyperlink:
+                cell_val = url_cell.hyperlink.target
+        urls = _split_urls(cell_val)
         url = urls[0] if urls else None
         supporting_urls = urls[1:]
 
