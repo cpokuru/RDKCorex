@@ -1,1 +1,1 @@
-# RDKCorex
+# RDKCore
