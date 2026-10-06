@@ -544,9 +544,9 @@ def render_hero(eyebrow: str, title: str, lede: str, badges_html: str = "", comp
   <div class="hero-flex">
     <div class="hero-inner">
       {eyebrow_html}
+      {badges}
       <h1{title_style}>{esc(title)}</h1>
       <p class="lede">{esc(lede)}</p>
-      {badges}
     </div>
     {visual}
   </div>

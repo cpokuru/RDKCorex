@@ -207,9 +207,8 @@ STATS_SECTION = """
 EXPLORE_SECTION = """
 <section style="padding:52px 44px 40px; max-width:1520px;">
   <div class="section-head">
-    <span class="eyebrow-lt">Components and Interfaces</span>
+    <span class="eyebrow-lt" style="color:#7dd3fc;">Components and Interfaces</span>
     <h2>Explore the Core RDK platform</h2>
-    <p>Browse the governed components, standardized APIs, and hardware specifications that define the RDK-B platform foundation.</p>
   </div>
   <div class="quicklink-row grid">
     <a class="quicklink-card" href="components/" style="--ql-color:var(--rdk-blue);">
@@ -243,8 +242,8 @@ EXPLORE_SECTION = """
 
 def build_about_page(spec: dict, about: dict) -> str:
     badges_html = (
-        '<span class="badge" style="background:#fef3c7;color:#92400e;border-color:#f59e0b;">RDK-B</span>'
-        '<span class="badge" style="background:#fef3c7;color:#92400e;border-color:#f59e0b;">RDK8 for Broadband</span>'
+        '<span class="badge" style="background:transparent;color:#a3e635;border-color:#a3e635;">RDK-B</span>'
+        '<span class="badge" style="background:transparent;color:#a3e635;border-color:#a3e635;">RDK8 for Broadband</span>'
     )
     from layout import render_hero
     hero = render_hero(
@@ -258,7 +257,6 @@ def build_about_page(spec: dict, about: dict) -> str:
     body = f'''
 {HOME_STYLE}
 {hero}
-{STATS_SECTION}
 {EXPLORE_SECTION}
 {FOOTER}
 '''
