@@ -303,7 +303,7 @@ SHARED_CSS = """
   table.def-table td { color: var(--ink); line-height: 1.6; border-right: 1px solid var(--border); }
   table.def-table td:last-child { border-right: none; }
   table.def-table td:first-child {
-    color: var(--ink); font-weight: 700; font-family: "Inter", "Segoe UI", sans-serif;
+    color: var(--ink); font-weight: 400; font-family: "Inter", "Segoe UI", sans-serif;
     font-size: 0.92rem; width: 26%; min-width: 180px;
   }
   table.def-table td.mono { font-family: "JetBrains Mono", monospace; font-size: 0.84rem; color: var(--muted); font-weight: 400; }
@@ -652,7 +652,7 @@ def render_topnav(active_id: str, path_prefix: str = "") -> str:
                 # link down into components/ from wherever we are.
                 cta_href = "." if active_id == "components" else path_prefix + COMPONENTS_URL
                 cta_cls = "cta active" if active_id == "components" else "cta"
-                links_html.append(f'<a class="{cta_cls}" href="{esc(cta_href)}">Component Catalog ↗</a>')
+                links_html.append(f'<a class="{cta_cls}" href="{esc(cta_href)}">Component Catalog</a>')
         else:  # "group"
             _, group_id, group_label, children = entry
             child_ids = {c[1] for c in children}
