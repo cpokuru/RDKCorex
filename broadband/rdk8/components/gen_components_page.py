@@ -213,7 +213,7 @@ def build_body(data: dict) -> str:
 })();
 </script>"""
 
-    lede = subtitle or "A list of RDK components categorized as core and optional."
+    lede = subtitle or "A list of RDK components categorized as Common core, Required and optional."
     return f'''
 {render_hero("Component Catalog", "EthWAN Router", lede, compact=True, visual_key="components")}
 
