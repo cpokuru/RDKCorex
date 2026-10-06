@@ -213,9 +213,9 @@ def build_body(data: dict) -> str:
 })();
 </script>"""
 
-    lede = subtitle or "Every RDK-B component for this device profile — repo, category, layer, and type."
+    lede = subtitle or "A list of RDK components categorized as core and optional."
     return f'''
-{render_hero("Core RDK Components", "EthWAN Router", lede, compact=True, visual_key="components")}
+{render_hero("Component Catalog", "EthWAN Router", lede, compact=True, visual_key="components")}
 
 {filter_css}
 

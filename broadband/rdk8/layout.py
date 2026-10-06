@@ -39,15 +39,15 @@ COMPONENTS_URL = "components/"
 NAV_LINKS = [
     ("link", "about", "Home", "index.html", False),
 
-    ("group", "nbi-group", "RDK8 North Bound APIs", [
-        ("link", "nbi", "RDK8 List of North Bound High Level APIs", "north-bound-apis.html", False),
-        ("link", "nbi-lowlevel", "RDK8 List of North Bound Low Level APIs", "north-bound-lowlevel-apis.html", False),
+    ("group", "nbi-group", "North-bound APIs", [
+        ("link", "nbi", "North Bound High Level APIs", "north-bound-apis.html", False),
+        ("link", "nbi-lowlevel", "North Bound Low Level APIs", "north-bound-lowlevel-apis.html", False),
     ]),
-    ("group", "sbi-group", "RDK8 South Bound APIs", [
-        ("link", "sbi", "RDK8 List of South Bound APIs", "south-bound-apis.html", False),
+    ("group", "sbi-group", "South-bound APIs", [
+        ("link", "sbi", "South Bound APIs", "south-bound-apis.html", False),
     ]),
-    ("link", "hwcompat", "RDK8 Hardware Compatibility", "hardware-compatibility.html", False),
-    ("link", "components", "Core RDK Components", COMPONENTS_URL, True),
+    ("link", "hwcompat", "Compatibility Specifications", "hardware-compatibility.html", False),
+    ("link", "components", "Component Catalog", COMPONENTS_URL, True),
 ]
 
 SHARED_CSS = """
@@ -652,7 +652,7 @@ def render_topnav(active_id: str, path_prefix: str = "") -> str:
                 # link down into components/ from wherever we are.
                 cta_href = "." if active_id == "components" else path_prefix + COMPONENTS_URL
                 cta_cls = "cta active" if active_id == "components" else "cta"
-                links_html.append(f'<a class="{cta_cls}" href="{esc(cta_href)}">Core RDK Components ↗</a>')
+                links_html.append(f'<a class="{cta_cls}" href="{esc(cta_href)}">Component Catalog ↗</a>')
         else:  # "group"
             _, group_id, group_label, children = entry
             child_ids = {c[1] for c in children}

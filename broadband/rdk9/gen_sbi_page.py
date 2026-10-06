@@ -309,9 +309,8 @@ EXTRA_CSS = """
 
 def build_page() -> str:
     body = f'''
-{render_hero("South Bound APIs", "South Bound APIs",
-    "The HAL and vendor-facing interfaces RDK-B exposes downward — the rdkb-halif-* "
-    "contracts between middleware and SoC/BSP. Click a HAL interface below to load its API spec.",
+{render_hero("South-bound APIs", "South-bound APIs",
+    "Hardware Abstraction Layer (HAL) specifications to aid silicon platform porting.",
     compact=True, visual_key="sbi")}
 
 <section class="tight-top">
@@ -331,7 +330,7 @@ def build_page() -> str:
   <div id="hal-panel"></div>
 </section>
 '''
-    head_extra = "<title>South Bound APIs — RDK-B Core Broadband</title>\n" + EXTRA_CSS + SCRIPT
+    head_extra = "<title>South-bound APIs — RDK-B Core Broadband</title>\n" + EXTRA_CSS + SCRIPT
     return render_page("sbi", head_extra, body)
 
 

@@ -38,7 +38,7 @@ FOOTER = f"""
     <a href="{SPEC_WIKI_URL}">Core RDK Broadband Spec<span>TAB-approved specification (wiki)</span></a>
     <a href="https://github.com/rdkcentral">rdkcentral on GitHub<span>Component source repositories</span></a>
   </div>
-  <div class="footer-meta">RDKM · © 2026 RDK Central. All rights reserved.</div>
+  <div class="footer-meta">Copyright &copy; 2026 RDK Management, LLC</div>
 </footer>
 """
 
@@ -164,19 +164,105 @@ def render_test_suites(rows: list[dict]) -> str:
     return '\n'.join(f'<tr><td class="mono">{esc(r["name"])}</td><td>{esc(r["definition"])}</td><td>{esc(r["owner"])}</td></tr>' for r in rows)
 
 
-def build_about_page(spec: dict, about: dict) -> str:
-    body = f'''
-{HOME_STYLE}
-<div id="home-main" class="page-main">
-  <div class="hero">
-    <div class="hero-flex">
-      <div class="hero-inner"><h1>CORE RDK for BROADBAND</h1></div>
-    </div>
+STATS_SECTION = """
+<div class="stats" style="margin:-32px 44px 0; position:relative; z-index:2;">
+  <div class="stat">
+    <span class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></svg></span>
+    <div><div class="num" id="stat-components">&mdash;</div><div class="lbl">Core Components</div></div>
+  </div>
+  <div class="stat">
+    <span class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5v8l-9 5-9-5V8z"/><path d="M12 12v9M3 8l9 4 9-4"/></svg></span>
+    <div><div class="num" id="stat-nb">&mdash;</div><div class="lbl">North-bound APIs</div></div>
+  </div>
+  <div class="stat">
+    <span class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M12 3l-4 9h8l-4-9z" opacity="0"/><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
+    <div><div class="num" id="stat-sb">&mdash;</div><div class="lbl">South-bound APIs</div></div>
+  </div>
+  <div class="stat">
+    <span class="stat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+    <div><div class="num" id="stat-specs">1</div><div class="lbl">Compatibility Specs</div></div>
   </div>
 </div>
+<script>
+(function(){
+  fetch('components/ethwan-router-components.json',{cache:'no-store'})
+    .then(r=>r.ok?r.json():Promise.reject()).then(d=>{
+      var t=(d.required||[]).length+(d['common-core']||[]).length+(d.optional||[]).length;
+      document.getElementById('stat-components').textContent=t;
+    }).catch(function(){});
+  fetch('north-bound-apis.json',{cache:'no-store'})
+    .then(r=>r.ok?r.json():Promise.reject()).then(d=>{
+      var a=Array.isArray(d)?d:(d.apis||d.items||d.parameters||null);
+      if(a)document.getElementById('stat-nb').textContent=a.length;
+    }).catch(function(){});
+  fetch('south-bound-apis.json',{cache:'no-store'})
+    .then(r=>r.ok?r.json():Promise.reject()).then(d=>{
+      var a=Array.isArray(d)?d:(d.apis||d.items||d.interfaces||null);
+      if(a)document.getElementById('stat-sb').textContent=a.length;
+    }).catch(function(){});
+})();
+</script>
+"""
+
+EXPLORE_SECTION = """
+<section style="padding:52px 44px 40px; max-width:1520px;">
+  <div class="section-head">
+    <span class="eyebrow-lt">Components and Interfaces</span>
+    <h2>Explore the Core RDK platform</h2>
+    <p>Browse the governed components, standardized APIs, and hardware specifications that define the RDK-B platform foundation.</p>
+  </div>
+  <div class="quicklink-row grid">
+    <a class="quicklink-card" href="components/" style="--ql-color:var(--rdk-blue);">
+      <span class="ql-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></svg></span>
+      <div class="ql-title">Component Catalog</div>
+      <div class="ql-desc">A list of RDK components categorized as core and optional.</div>
+      <div class="ql-cta">Explore &rarr;</div>
+    </a>
+    <a class="quicklink-card" href="north-bound-apis.html" style="--ql-color:var(--rdk-green);">
+      <span class="ql-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5v8l-9 5-9-5V8z"/><path d="M12 12v9M3 8l9 4 9-4"/></svg></span>
+      <div class="ql-title">North-bound APIs</div>
+      <div class="ql-desc">APIs that can be used by applications to access system services and resources.</div>
+      <div class="ql-cta">Explore &rarr;</div>
+    </a>
+    <a class="quicklink-card" href="south-bound-apis.html" style="--ql-color:var(--rdk-amber);">
+      <span class="ql-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
+      <div class="ql-title">South-bound APIs</div>
+      <div class="ql-desc">Hardware Abstraction Layer (HAL) specifications to aid silicon platform porting.</div>
+      <div class="ql-cta">Explore &rarr;</div>
+    </a>
+    <a class="quicklink-card" href="hardware-compatibility.html" style="--ql-color:var(--rdk-orange);">
+      <span class="ql-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+      <div class="ql-title">Compatibility Specifications</div>
+      <div class="ql-desc">Specifications that outline the minimal hardware configurations to run Core RDK.</div>
+      <div class="ql-cta">Explore &rarr;</div>
+    </a>
+  </div>
+</section>
+"""
+
+
+def build_about_page(spec: dict, about: dict) -> str:
+    badges_html = (
+        '<span class="badge" style="background:#fef3c7;color:#92400e;border-color:#f59e0b;">RDK-B</span>'
+        '<span class="badge" style="background:#fef3c7;color:#92400e;border-color:#f59e0b;">RDK8 for Broadband</span>'
+    )
+    from layout import render_hero
+    hero = render_hero(
+        eyebrow="",
+        title="Core RDK Broadband",
+        lede=("Core RDK Broadband (RDK-B) defines the common platform foundation for RDK-based Broadband solutions "
+              "through governed capabilities, standardized interfaces, lifecycle policies, and conformance requirements."),
+        badges_html=badges_html,
+        visual_key="about",
+    )
+    body = f'''
+{HOME_STYLE}
+{hero}
+{STATS_SECTION}
+{EXPLORE_SECTION}
 {FOOTER}
 '''
-    return render_page('about', '<title>CORE RDK for BROADBAND</title>', body,
+    return render_page('about', '<title>Core RDK Broadband</title>', body,
                        script=TABS_SCRIPT + FIT_SCRIPT)
 
 
