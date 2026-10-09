@@ -46,7 +46,6 @@ NAV_LINKS = [
     ("group", "sbi-group", "South-bound APIs", [
         ("link", "sbi", "South Bound APIs", "south-bound-apis.html", False),
     ]),
-    ("link", "hwcompat", "Compatibility Specifications", "hardware-compatibility.html", False),
     ("link", "components", "Component Catalog", COMPONENTS_URL, True),
 ]
 
@@ -145,10 +144,7 @@ SHARED_CSS = """
 
   /* ---- hero ---- */
   .hero {
-    background:
-      radial-gradient(ellipse 600px 380px at 8% 30%, rgba(52,130,255,0.28), transparent 65%),
-      radial-gradient(ellipse 380px 300px at 95% 80%, rgba(70,30,130,0.12), transparent 60%),
-      linear-gradient(120deg, #1e3878 0%, #1d2870 40%, #211868 75%, #2a1858 100%);
+    background: linear-gradient(90deg, #3a8fc7 0%, #4aab7a 25%, #c9b84a 60%, #c97a3a 100%);
     color: #fff; padding: 68px 44px 52px; position: relative; overflow: hidden;
   }
   .hero-flex { display: flex; align-items: center; gap: 44px; max-width: 1520px; }
