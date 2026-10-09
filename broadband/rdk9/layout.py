@@ -71,7 +71,7 @@ SHARED_CSS = """
   /* ---- top accent bar, echoes the RDK mark's four bars ---- */
   .accent-bar {
     height: 5px; width: 100%;
-    background: linear-gradient(90deg, var(--rdk-blue) 0%, var(--rdk-blue) 25%, var(--rdk-green) 25%, var(--rdk-green) 50%, var(--rdk-amber) 50%, var(--rdk-amber) 75%, var(--rdk-orange) 75%, var(--rdk-orange) 100%);
+    background: url("header-glow.png") center/cover no-repeat; background-color: #43b5e8;
     position: fixed; top: 0; left: 0; z-index: 60;
   }
 
@@ -144,7 +144,10 @@ SHARED_CSS = """
 
   /* ---- hero ---- */
   .hero {
-    background: url("header-glow.png") center/cover no-repeat;
+    background:
+      radial-gradient(ellipse 600px 380px at 8% 30%, rgba(52,130,255,0.28), transparent 65%),
+      radial-gradient(ellipse 380px 300px at 95% 80%, rgba(70,30,130,0.12), transparent 60%),
+      linear-gradient(120deg, #1e3878 0%, #1d2870 40%, #211868 75%, #2a1858 100%);
     color: #fff; padding: 68px 44px 52px; position: relative; overflow: hidden;
   }
   .hero-flex { display: flex; align-items: center; gap: 44px; max-width: 1520px; }
