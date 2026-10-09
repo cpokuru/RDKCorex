@@ -230,7 +230,7 @@ EXPLORE_SECTION = """
 def build_about_page(spec: dict, about: dict) -> str:
     badges_html = (
         '<span class="badge" style="background:transparent;color:#a3e635;border-color:#a3e635;">RDK-B</span>'
-        '<span class="badge" style="background:transparent;color:#a3e635;border-color:#a3e635;">RDK9 for Broadband</span>'
+        '<span class="badge" style="background:transparent;color:#a3e635;border-color:#a3e635;">RDK8 for Broadband</span>'
     )
     from layout import render_hero
     hero = render_hero(
