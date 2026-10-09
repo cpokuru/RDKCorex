@@ -72,7 +72,7 @@ SHARED_CSS = """
   /* ---- top accent bar, echoes the RDK mark's four bars ---- */
   .accent-bar {
     height: 5px; width: 100%;
-    background: url("header-glow.png") center/cover no-repeat; background-color: #43b5e8;
+    background: url("header-glow.png") no-repeat; background-size: 100% 100%;
     position: fixed; top: 0; left: 0; z-index: 60;
   }
 
