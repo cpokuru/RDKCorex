@@ -46,7 +46,6 @@ NAV_LINKS = [
     ("group", "sbi-group", "South-bound APIs", [
         ("link", "sbi", "South Bound APIs", "south-bound-apis.html", False),
     ]),
-    ("link", "hwcompat", "Compatibility Specifications", "hardware-compatibility.html", False),
     ("link", "components", "Component Catalog", COMPONENTS_URL, True),
 ]
 
