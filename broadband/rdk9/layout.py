@@ -71,7 +71,7 @@ SHARED_CSS = """
   /* ---- top accent bar, echoes the RDK mark's four bars ---- */
   .accent-bar {
     height: 5px; width: 100%;
-    background: url("header-glow.png") center/cover no-repeat; background-color: #43b5e8;
+    background: var(--glow-img, linear-gradient(90deg,#29b6e8,#7ac943,#f5a623,#f0653e)) center/cover no-repeat;
     position: fixed; top: 0; left: 0; z-index: 60;
   }
 
@@ -146,7 +146,7 @@ SHARED_CSS = """
   .hero {
     background:
       linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.32) 100%),
-      url("header-glow.png") no-repeat top center/cover;
+      var(--glow-img, linear-gradient(120deg,#1e3878,#2a1858)) no-repeat top center/cover;
     color: #fff; padding: 68px 44px 52px; position: relative; overflow: hidden;
   }
   .hero-flex { display: flex; align-items: center; gap: 44px; max-width: 1520px; }
@@ -930,6 +930,7 @@ def render_page(active_id: str, head_extra: str, body_html: str, script: str = "
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>{SHARED_CSS}</style>
+<style>:root {{ --glow-img: url("{path_prefix}header-glow.png"); }}</style>
 {head_extra}
 </head>
 <body>
