@@ -104,7 +104,9 @@
 
   /* ---- hero ---- */
   .hero {
-    background: url("header-glow.png") no-repeat center/cover;
+    background:
+      linear-gradient(120deg, rgba(30,56,120,0.72) 0%, rgba(29,40,112,0.72) 40%, rgba(33,24,104,0.72) 75%, rgba(42,24,88,0.72) 100%),
+      url("header-glow.png") no-repeat center/cover;
     color: #fff; padding: 68px 44px 52px; position: relative; overflow: hidden;
   }
   .hero-flex { display: flex; align-items: center; gap: 44px; max-width: 1520px; }
@@ -525,7 +527,7 @@
     </div><div class="nav-group ">
       <button type="button" class="nav-group-toggle ">South-bound APIs <span class="caret">&#9662;</span></button>
       <div class="nav-dropdown"><div class="nav-dropdown-inner"><a class="" href="south-bound-apis.html">South Bound APIs</a></div></div>
-    </div>
+    </div><a class="" href="hardware-compatibility.html">Compatibility Specifications</a>
   </nav>
 </div>
 <script>
