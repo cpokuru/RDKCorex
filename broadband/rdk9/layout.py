@@ -146,8 +146,9 @@ SHARED_CSS = """
   /* ---- hero ---- */
   .hero {
     background:
-      linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.32) 100%),
-      var(--glow-img, linear-gradient(120deg,#1e3878,#2a1858)) no-repeat top center/cover;
+      linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.28) 100%),
+      var(--glow-img, linear-gradient(120deg,#1e3878,#2a1858)) no-repeat top center/100% auto,
+      #00182a;
     color: #fff; padding: 68px 44px 52px; position: relative; overflow: hidden;
   }
   .hero-flex { display: flex; align-items: center; gap: 44px; max-width: 1520px; }
