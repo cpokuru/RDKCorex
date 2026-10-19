@@ -1,1 +1,0 @@
-# CoreRDK-Broadband-Specification
