@@ -38,7 +38,6 @@ import argparse
 import hashlib
 import html
 import json
-import re
 import sys
 from pathlib import Path
 
@@ -80,27 +79,6 @@ def esc(s) -> str:
     return html.escape("" if s is None else str(s))
 
 
-def versioned_url(base_url, version_str):
-    """Enrich a GitHub base URL with the exact release tag or commit hash."""
-    if not base_url or not version_str:
-        return base_url
-    if not base_url.startswith("https://github.com"):
-        return base_url  # Gerrit / non-GitHub: leave alone
-    base = base_url.rstrip("/")
-    # Primary version = before any parenthetical sub-repo note
-    # e.g. "1.2.9 (rdm-agent: develop / rev:d5e73722)" → "1.2.9"
-    # e.g. "develop / rev:4bc32193 (rdk-wps-monitor: ...)" → "develop / rev:4bc32193"
-    primary = version_str.split("(")[0].strip()
-    # Semver / explicit tag: "1.4.3", "v1.6.0", "2.11.0" …
-    if re.match(r"^v?\d+\.\d+", primary):
-        return f"{base}/releases/tag/{primary}"
-    # Branch + commit: "develop / rev:f203bb73", "main / rev:8b6d5211" …
-    m = re.search(r"rev:([0-9a-f]+)", primary)
-    if m:
-        return f"{base}/commit/{m.group(1)}"
-    return base_url  # branch only — nothing to pin
-
-
 def build_body(data: dict) -> str:
     subtitle = data.get("subtitle", "")
     schema_version = data["schemaVersion"]
@@ -133,7 +111,7 @@ def build_body(data: dict) -> str:
         tier = tiers.get(c["tier"], {"label": c["tier"], "color": "gray"})
         tier_style = TIER_COLORS[tier["color"]]
         cat_style = category_color(c["category"] or "Uncategorized")
-        url = versioned_url(c.get("url"), c.get("version"))
+        url = c.get("url")
         repos = [u for u in [url, *c.get("supportingUrls", [])] if u]
         if repos:
             url_cell = '<div style="display:flex;flex-direction:column;gap:4px;">' + "".join(
