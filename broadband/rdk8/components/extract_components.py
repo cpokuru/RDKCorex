@@ -274,7 +274,7 @@ def _rows(wb, versions: dict | None = None):
 
         profile_values = {}
         for i, profile in enumerate(PROFILE_COLUMNS):
-            orig = row[profile_idxs[i]]
+            orig = raw[profile_idxs[i]]
             lookup_key = CURATED_ALIASES.get(name, _norm_key(name))
             corrected = corrections.get(lookup_key, {}).get(profile)
             # All Profiles' classification wins outright whenever the repo

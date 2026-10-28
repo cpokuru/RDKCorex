@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-10-28T19:55:46Z",
+  "generatedAt": "2026-10-28T20:06:11Z",
   "title": "RDK-B EthWAN WiFi Router Components",
   "subtitle": "Components for the EthWAN WiFi Router device profile: Common Core, Required, and Optional.",
   "tiers": [
@@ -99,6 +99,14 @@
       "version": "develop / rev:50e24d11"
     },
     {
+      "name": "RFC",
+      "category": "Remote Device Management",
+      "tier": "optional",
+      "url": "https://github.com/rdkcentral/rfc",
+      "supportingUrls": [],
+      "version": "1.2.2"
+    },
+    {
       "name": "Ethernet Agent (used for LAN)",
       "category": "LAN Interface Components",
       "tier": "optional",
@@ -123,6 +131,14 @@
       "url": "https://github.com/rdkcentral/mesh-agent",
       "supportingUrls": [],
       "version": "main"
+    },
+    {
+      "name": "unified-wifi-mesh\n(EasyMesh)",
+      "category": "LAN Interface Components",
+      "tier": "optional",
+      "url": "https://github.com/rdkcentral/unified-wifi-mesh",
+      "supportingUrls": [],
+      "version": "v0.2.1"
     },
     {
       "name": "ieee1905-rs",
@@ -173,6 +189,27 @@
       "version": "v1.0.0"
     },
     {
+      "name": "dhcp-manager (recipe for DHCP client and Server)",
+      "category": "DHCP",
+      "tier": "required",
+      "url": "https://github.com/rdkcentral/dhcp-manager",
+      "supportingUrls": [
+        "https://github.com/rdkcentral/rdkb-halif-dhcp",
+        "https://github.com/rdkcentral/rdkb-halif-dhcp6c",
+        "https://github.com/rdkcentral/rdkb-halif-test-dhcp",
+        "https://github.com/rdkcentral/rdkb-halif-test-dhcp6c"
+      ],
+      "version": "v1.0.0"
+    },
+    {
+      "name": "P&M",
+      "category": "Routing, parental control and WAN Management Components",
+      "tier": "required",
+      "url": "https://github.com/rdkcentral/provisioning-and-management",
+      "supportingUrls": [],
+      "version": "develop / rev:19aa42f4"
+    },
+    {
       "name": "WAN Manager",
       "category": "Routing, parental control and WAN Management Components",
       "tier": "required",
@@ -195,6 +232,14 @@
       "url": "https://github.com/rdkcentral/secure-upnp",
       "supportingUrls": [],
       "version": "develop / rev:c1365bea"
+    },
+    {
+      "name": "ccsp-xdns",
+      "category": "Routing, parental control and WAN Management Components",
+      "tier": "optional",
+      "url": "https://github.com/rdkcentral/xdns",
+      "supportingUrls": [],
+      "version": "develop / rev:d53e6ff2"
     },
     {
       "name": "advanced-security",
@@ -423,6 +468,14 @@
       "url": "https://github.com/rdkcentral/notify-component",
       "supportingUrls": [],
       "version": "develop / rev:3cb9874b"
+    },
+    {
+      "name": "PSM",
+      "category": "Non-Vol Storage",
+      "tier": "required",
+      "url": "https://github.com/rdkcentral/persistent-storage-manager",
+      "supportingUrls": [],
+      "version": "develop / rev:00859265"
     },
     {
       "name": "DSM",

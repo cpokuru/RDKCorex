@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "generatedAt": "2026-10-28T19:55:46Z",
+  "generatedAt": "2026-10-28T20:06:11Z",
   "title": "RDK-B EXT OpenSync Components",
   "subtitle": "Components for the EXT OpenSync device profile: Common Core, Required, and Optional.",
   "tiers": [
@@ -81,6 +81,21 @@
       "url": "https://github.com/rdkcentral/xconf-client",
       "supportingUrls": [],
       "version": "develop / rev:50e24d11"
+    },
+    {
+      "name": "RFC",
+      "category": "Remote Device Management",
+      "tier": "optional",
+      "url": "https://github.com/rdkcentral/rfc",
+      "supportingUrls": [],
+      "version": "1.2.2"
+    },
+    {
+      "name": "RDK OVS Agent",
+      "category": "Remote Device Management",
+      "tier": "required",
+      "url": "https://github.com/rdkcentral/open-virtual-switch-agent",
+      "supportingUrls": []
     },
     {
       "name": "Ethernet Agent (used for LAN)",
@@ -295,6 +310,14 @@
       "url": "https://github.com/rdkcentral/data-model-cli",
       "supportingUrls": [],
       "version": "develop / rev:f203bb73"
+    },
+    {
+      "name": "PSM",
+      "category": "Non-Vol Storage",
+      "tier": "required",
+      "url": "https://github.com/rdkcentral/persistent-storage-manager",
+      "supportingUrls": [],
+      "version": "develop / rev:00859265"
     },
     {
       "name": "DSM",
